@@ -158,23 +158,6 @@ class TwitchChannelPointsMiner:
             self.username, logger_settings
         )
 
-        # Check for the latest version of the script
-        current_version, github_version = check_versions()
-
-        logger.info(
-            f"Twitch Channel Points Miner v2-{current_version} (fork by rdavydov)"
-        )
-        logger.info(
-            "https://github.com/rdavydov/Twitch-Channel-Points-Miner-v2")
-
-        if github_version == "0.0.0":
-            logger.error(
-                "Unable to detect if you have the latest version of this script"
-            )
-        elif current_version != github_version:
-            logger.info(
-                f"You are running version {current_version} of this script")
-            logger.info(f"The latest version on GitHub is {github_version}")
 
         for sign in [signal.SIGINT, signal.SIGSEGV, signal.SIGTERM]:
             signal.signal(sign, self.end)
@@ -256,7 +239,7 @@ class TwitchChannelPointsMiner:
                         streamers_dict[username] = username.lower().strip()
 
             logger.info(
-                f"Loading data for {len(streamers_name)} streamers. Please wait...",
+                f"Загрузка данных для {len(streamers_name)} стримеров. Пожалуйста, подождите...",
                 extra={"emoji": ":nerd_face:"},
             )
             for username in streamers_name:
@@ -486,7 +469,7 @@ class TwitchChannelPointsMiner:
                     - self.original_streamers[streamer_index]
                 )
                 logger.info(
-                    f"{repr(self.streamers[streamer_index])}, Total Points Gained (after farming - before farming): {_millify(gained)}",
+                    f"{repr(self.streamers[streamer_index])}, Total Points Gained: {_millify(gained)}",
                     extra={"emoji": ":robot:"},
                 )
                 if self.streamers[streamer_index].history != {}:

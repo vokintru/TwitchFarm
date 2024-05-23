@@ -108,7 +108,7 @@ class Streamer(object):
         self.mutex = Lock()
 
     def __repr__(self):
-        return f"Streamer(username={self.username}, channel_id={self.channel_id}, channel_points={_millify(self.channel_points)})"
+        return f"Streamer {self.username} (channel points={_millify(self.channel_points)})"
 
     def __str__(self):
         return (
@@ -125,7 +125,7 @@ class Streamer(object):
         self.toggle_chat()
 
         logger.info(
-            f"{self} is Offline!",
+            f"{self} Оффлайн!",
             extra={
                 "emoji": ":sleeping:",
                 "event": Events.STREAMER_OFFLINE,
@@ -141,7 +141,7 @@ class Streamer(object):
         self.toggle_chat()
 
         logger.info(
-            f"{self} is Online!",
+            f"{self} Онлайн!",
             extra={
                 "emoji": ":partying_face:",
                 "event": Events.STREAMER_ONLINE,
