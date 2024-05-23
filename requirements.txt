@@ -10,4 +10,4 @@ colorama
 flask
 irc
 pandas
-dotenv
+python-dotenv
